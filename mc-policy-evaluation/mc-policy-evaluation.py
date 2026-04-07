@@ -18,8 +18,8 @@ def mc_policy_evaluation(episodes, gamma, n_states):
             reward[i] = R
 
         uni_state, first_idx = np.unique(state, return_index=True)
-        V[state[first_idx]] += reward[first_idx]
-        init_state[state[first_idx]] += 1
+        V[uni_state] += reward[first_idx]
+        init_state[uni_state] += 1
         
     idx = np.where(init_state > 0)
     V[idx] = V[idx] / init_state[idx]
